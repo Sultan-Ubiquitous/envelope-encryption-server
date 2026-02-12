@@ -8,7 +8,7 @@
     "dev:vercel": "vercel dev",
     "build": "tsc -b --force",
     "start": "node dist/server.js",
-    "vercel-build": "prisma generate && tsc -p tsconfig.json",
+    "vercel-build": "cd ../../packages/crypto && pnpm install && pnpm run build && cd ../../apps/api && prisma generate && tsc -p tsconfig.json",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio",
