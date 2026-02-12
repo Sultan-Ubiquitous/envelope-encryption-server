@@ -109,7 +109,7 @@ export async function createApp() {
     // Log unexpected errors
     fastify.log.error(error, 'Unexpected error');
 
-    // Generic error response
+    // Generic error respons
     const response: ErrorResponse = {
       error: 'Internal Server Error',
       message:
