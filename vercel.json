@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "pnpm install && pnpm --filter=@repo/crypto build && pnpm --filter=api build",
+  "buildCommand": "pnpm install && pnpm turbo build --filter=api",
   "installCommand": "pnpm install",
   "framework": null,
   "functions": {
