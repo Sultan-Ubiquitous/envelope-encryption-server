@@ -1,10 +1,10 @@
-import { ValidationError } from '../errors/crypto-errors';
-import type { TxSecureRecord, EncryptInput } from '../types';
+import { ValidationError } from '../errors/crypto-errors.js';
+import type { TxSecureRecord, EncryptInput } from '../types/index.js';
 import {
   validateNonce,
   validateAuthTag,
   validateCiphertext,
-} from './crypto-validators';
+} from './crypto-validators.js';
 
 /**
  * Validates encryption input

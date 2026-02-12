@@ -1,5 +1,5 @@
 import { createCipheriv, createDecipheriv, randomBytes } from 'crypto';
-import { AuthenticationError, DecryptionError } from '../errors/crypto-errors';
+import { AuthenticationError, DecryptionError } from '../errors/crypto-errors.js';
 
 const ALGORITHM = 'aes-256-gcm';
 const NONCE_LENGTH = 12; // 96 bits (optimal for GCM)

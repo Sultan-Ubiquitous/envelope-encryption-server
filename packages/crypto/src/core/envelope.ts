@@ -1,10 +1,10 @@
 import { randomUUID } from 'crypto';
-import type { TxSecureRecord, EncryptInput, DecryptResult } from '../types';
-import { encryptAesGcm, decryptAesGcm } from './aes-gcm';
-import { generateDEK, secureWipe } from './key-management';
-import { validateEncryptInput, validateTxSecureRecord } from '../validation/schema';
-import { validateMasterKey } from '../validation/crypto-validators';
-import { hexToBuffer } from '../validation/crypto-validators';
+import type { TxSecureRecord, EncryptInput, DecryptResult } from '../types/index.js';
+import { encryptAesGcm, decryptAesGcm } from './aes-gcm.js';
+import { generateDEK, secureWipe } from './key-management.js';
+import { validateEncryptInput, validateTxSecureRecord } from '../validation/schema.js';
+import { validateMasterKey } from '../validation/crypto-validators.js';
+import { hexToBuffer } from '../validation/crypto-validators.js';
 
 const MASTER_KEY_VERSION = 1;
 

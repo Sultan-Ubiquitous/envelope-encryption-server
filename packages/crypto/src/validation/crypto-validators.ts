@@ -1,4 +1,4 @@
-import { ValidationError } from '../errors/crypto-errors';
+import { ValidationError } from '../errors/crypto-errors.js';
 
 /**
  * Validates that a string is valid hexadecimal

@@ -1,6 +1,6 @@
 import { randomBytes } from 'crypto';
-import { KeyManagementError } from '../errors/crypto-errors';
-import { validateMasterKey } from '../validation/crypto-validators';
+import { KeyManagementError } from '../errors/crypto-errors.js';
+import { validateMasterKey } from '../validation/crypto-validators.js';
 
 const DEK_LENGTH = 32; // 256 bits
 

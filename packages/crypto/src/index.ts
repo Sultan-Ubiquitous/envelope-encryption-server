@@ -26,14 +26,14 @@
  */
 
 // Core functions
-export { encryptPayload, decryptPayload } from './core/envelope';
-export { generateMasterKey, loadMasterKey } from './core/key-management';
+export { encryptPayload, decryptPayload } from './core/envelope.js';
+export { generateMasterKey, loadMasterKey } from './core/key-management.js';
 
 // Validation
-export { validateTxSecureRecord } from './validation/schema';
+export { validateTxSecureRecord } from './validation/schema.js';
 
 // Types
-export type { TxSecureRecord, EncryptInput, DecryptResult } from './types';
+export type { TxSecureRecord, EncryptInput, DecryptResult } from './types/index.js';
 
 // Errors
 export {
@@ -42,4 +42,4 @@ export {
   AuthenticationError,
   DecryptionError,
   KeyManagementError,
-} from './errors/crypto-errors';
+} from './errors/crypto-errors.js';
