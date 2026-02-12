@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import type { TxSecureRecord } from '@repo/crypto';
-import type { ITransactionStorage } from './storage.interface.js';
+import type { ITransactionStorage, TxSummary } from './storage.interface.js';
 import { ConflictError, InternalServerError } from '../errors/api-errors.js';
 
 /**
@@ -74,6 +74,31 @@ export class PrismaStorage implements ITransactionStorage {
     } catch (error: any) {
       throw new InternalServerError(
         `Failed to check transaction existence: ${error.message || 'Unknown error'}`
+      );
+    }
+  }
+
+  async findAll(): Promise<TxSummary[]> {
+    try {
+      const transactions = await this.prisma.transaction.findMany({
+        select: {
+          id: true,
+          partyId: true,
+          createdAt: true,
+        },
+        orderBy: {
+          createdAt: 'desc',
+        },
+      });
+
+      return transactions.map((tx) => ({
+        id: tx.id,
+        partyId: tx.partyId,
+        createdAt: tx.createdAt.toISOString(),
+      }));
+    } catch (error: any) {
+      throw new InternalServerError(
+        `Failed to list transactions: ${error.message || 'Unknown error'}`
       );
     }
   }

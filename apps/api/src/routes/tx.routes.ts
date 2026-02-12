@@ -13,6 +13,9 @@ export async function txRoutes(
 
   // POST /tx/encrypt - Encrypt and store transaction
   fastify.post('/tx/encrypt', controller.encryptHandler);
+  
+  //GET /tx - Get all transactions
+  fastify.get('/tx', controller.listHandler);
 
   // GET /tx/:id - Get encrypted transaction
   fastify.get('/tx/:id', controller.getHandler);

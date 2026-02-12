@@ -1,6 +1,6 @@
 import { encryptPayload, decryptPayload } from '@repo/crypto';
 import type { TxSecureRecord, EncryptInput } from '@repo/crypto';
-import type { ITransactionStorage } from '../storage/storage.interface.js';
+import type { ITransactionStorage, TxSummary } from '../storage/storage.interface.js';
 import { NotFoundError } from '../errors/api-errors.js';
 import type { DecryptResponse } from '../types/api.types.js';
 
@@ -54,6 +54,10 @@ export class TransactionService {
       partyId: result.partyId,
       payload: result.payload,
     };
+  }
+  //get all the transactions
+  async list(): Promise<TxSummary[]> {
+    return this.storage.findAll();
   }
 
   /**

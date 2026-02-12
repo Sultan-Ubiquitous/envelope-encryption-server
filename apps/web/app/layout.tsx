@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Encryption Dashboard",
+  title: "Secure Vault",
   description: "Made by Azim",
 };
 

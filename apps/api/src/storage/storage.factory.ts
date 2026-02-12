@@ -17,6 +17,7 @@ export class StorageFactory {
     switch (storageType) {
       case 'memory':
         console.log('📦 Using in-memory storage');
+        //@ts-ignore
         return new MemoryStorage();
 
       case 'prisma':

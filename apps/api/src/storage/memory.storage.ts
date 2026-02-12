@@ -1,5 +1,5 @@
 import type { TxSecureRecord } from '@repo/crypto';
-import type { ITransactionStorage } from './storage.interface.js';
+import type { ITransactionStorage, TxSummary } from './storage.interface.js';
 import { ConflictError } from '../errors/api-errors.js';
 
 /**
@@ -55,6 +55,24 @@ export class MemoryStorage implements ITransactionStorage {
    * Clear all stored transactions
    * Useful for testing
    */
+  async findAll(): Promise<TxSummary[]> {
+    // Convert Map values to an array
+    const records = Array.from(this.store.values());
+
+    // Map to summary format
+    const summaries = records.map((record) => ({
+      id: record.id,
+      partyId: record.partyId,
+      createdAt: record.createdAt,
+    }));
+
+    // Sort by creation date descending (newest first)
+    // This ensures consistency with the Prisma implementation
+    return summaries.sort((a, b) => 
+      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
+  }
+  
   clear(): void {
     this.store.clear();
   }

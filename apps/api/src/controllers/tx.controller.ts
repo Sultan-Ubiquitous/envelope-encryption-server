@@ -109,4 +109,12 @@ export class TransactionController {
 
     return reply.status(200).send(result);
   };
+
+  listHandler = async (
+    request: FastifyRequest,
+    reply: FastifyReply
+  ) => {
+    const list = await this.service.list();
+    return reply.status(200).send(list);
+  };
 }

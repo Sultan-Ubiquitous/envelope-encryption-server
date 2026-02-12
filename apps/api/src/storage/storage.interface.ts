@@ -4,6 +4,12 @@ import type { TxSecureRecord } from '@repo/crypto';
  * Storage abstraction interface
  * Allows swapping between in-memory and database implementations
  */
+export interface TxSummary {
+  id: string;
+  partyId: string;
+  createdAt: string;
+}
+
 export interface ITransactionStorage {
   /**
    * Save a transaction record
@@ -27,4 +33,6 @@ export interface ITransactionStorage {
    * @returns true if healthy, false otherwise
    */
   healthCheck(): Promise<boolean>;
+
+  findAll(): Promise<TxSummary[]>;
 }
