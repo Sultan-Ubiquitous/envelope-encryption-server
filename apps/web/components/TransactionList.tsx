@@ -53,7 +53,7 @@ export default function TransactionList() {
         </div>
       )}
 
-      <div className="flex-1 overflow-auto max-h-[500px] border border-gray-100 rounded-lg">
+      <div className="flex-1 overflow-auto max-h-125 border border-gray-100 rounded-lg">
         {loading && transactions.length === 0 ? (
           <div className="p-8 text-center text-gray-400 text-sm animate-pulse">Loading records...</div>
         ) : transactions.length === 0 ? (
@@ -77,7 +77,7 @@ export default function TransactionList() {
                   </td>
                   <td className="p-3 text-xs font-mono text-gray-600">
                     <div className="flex items-center gap-2">
-                      <span className="truncate max-w-[180px]" title={tx.id}>{tx.id}</span>
+                      <span className="truncate max-w-45" title={tx.id}>{tx.id}</span>
                       <button 
                         onClick={() => copyToClipboard(tx.id)}
                         className="opacity-0 group-hover:opacity-100 text-blue-500 hover:text-blue-700"
