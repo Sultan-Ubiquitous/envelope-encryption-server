@@ -5,10 +5,32 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+model Transaction {
+  id           String   @id
+  partyId      String   @map("party_id")
+  createdAt    DateTime @map("created_at")
+
+  // Encrypted payload fields
+  payloadNonce String   @map("payload_nonce")
+  payloadCt    String   @map("payload_ct")
+  payloadTag   String   @map("payload_tag")
+
+  // Wrapped DEK fields
+  dekWrapNonce String   @map("dek_wrap_nonce")
+  dekWrapped   String   @map("dek_wrapped")
+  dekWrapTag   String   @map("dek_wrap_tag")
+
+  // Algorithm and version
+  alg          String
+  mkVersion    Int      @map("mk_version")
+
+  @@index([partyId])
+  @@map("transactions")
 }
