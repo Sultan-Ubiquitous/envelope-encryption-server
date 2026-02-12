@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "prisma generate && tsx watch src/server.ts",
-    "dev:vercel": "vercel dev",
+    "vercel-dev": "vercel dev", 
     "build": "tsc -b --force",
     "start": "node dist/server.js",
-    "vercel-build": "cd ../../packages/crypto && pnpm install && pnpm run build && cd ../../apps/api && prisma generate && tsc -p tsconfig.json",
+    "postinstall": "prisma generate",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio",
