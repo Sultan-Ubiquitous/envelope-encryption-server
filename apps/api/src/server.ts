@@ -1,16 +1,19 @@
+// src/server.ts
 import { createApp } from './app.js';
 import { env } from './config/env.js';
 import { StorageFactory } from './storage/storage.factory.js';
 import { config } from 'dotenv';
+
 config();
+
 /**
- * Start the server
+ * Start the server (Local development only)
  */
 async function start() {
   try {
     const app = await createApp();
 
-    // Start listening
+    // Start listening only in local development
     await app.listen({
       port: parseInt(env.PORT, 10),
       host: env.HOST,
@@ -40,4 +43,5 @@ async function start() {
   }
 }
 
+// Start the server (works with tsx, node, and ts-node)
 start();

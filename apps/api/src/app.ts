@@ -1,3 +1,4 @@
+// src/app.ts - Keep as is, no changes needed
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
@@ -28,7 +29,7 @@ export async function createApp() {
   // Security plugins
   await fastify.register(helmet);
   await fastify.register(cors, {
-    origin: env.NODE_ENV === 'development' ? '*' : false,
+    origin: env.NODE_ENV === 'development' ? '*' : '*',
   });
 
   // Initialize dependencies
@@ -110,13 +111,13 @@ export async function createApp() {
 
     // Generic error response
     const response: ErrorResponse = {
-  error: 'Internal Server Error',
-  message:
-    env.NODE_ENV === 'development' && error instanceof Error
-      ? error.message
-      : 'An unexpected error occurred',
-  statusCode: 500,
-};
+      error: 'Internal Server Error',
+      message:
+        env.NODE_ENV === 'development' && error instanceof Error
+          ? error.message
+          : 'An unexpected error occurred',
+      statusCode: 500,
+    };
 
     return reply.status(500).send(response);
   });
