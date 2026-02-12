@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "cd ../.. && turbo run build --filter=api...",
-  "installCommand": "cd ../.. && npm install",
+  "installCommand": "cd ../.. && pnpm install",
+  "buildCommand": "cd ../.. && pnpm turbo run build --filter=api...",
   "framework": null,
   "outputDirectory": "dist",
   "rewrites": [
@@ -9,10 +9,5 @@
       "source": "/(.*)",
       "destination": "/api/index.ts"
     }
-  ],
-   "functions": {
-    "api/index.ts": {
-      "maxDuration": 30
-    }
-  }
+  ]
 }
