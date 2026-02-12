@@ -1,7 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": ["node", "vitest/globals"]
+    "types": ["node", "vitest/globals"],
+    "tsBuildInfoFile": "./dist/.tsbuildinfo.test",  // <-- DIFFERENT LOCATION
+    "noEmit": true
   },
   "include": ["src/**/*", "tests/**/*"]
 }
