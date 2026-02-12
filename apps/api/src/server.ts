@@ -1,7 +1,8 @@
 import { createApp } from './app.js';
 import { env } from './config/env.js';
 import { StorageFactory } from './storage/storage.factory.js';
-
+import { config } from 'dotenv';
+config();
 /**
  * Start the server
  */

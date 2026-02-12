@@ -1,14 +1,20 @@
 {
     "extends": "@repo/typescript-config/base.json",
     "compilerOptions": {
-        "rootDir": "./src",
-        "outDir": "./dist",
-        "types": ["node"]
+         "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noUncheckedIndexedAccess": true
     },
-    "include": ["src"],
-    "references": [
-    {
-      "path": "../../packages/crypto"
-    }
-  ]
+    "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

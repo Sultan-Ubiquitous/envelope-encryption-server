@@ -1,15 +1,13 @@
-import { PrismaClient } from '@prisma/client';
 import type { ITransactionStorage } from './storage.interface.js';
 import { MemoryStorage } from './memory.storage.js';
 import { PrismaStorage } from './prisma.storage.js';
 import { env } from '../config/env.js';
+import { prisma } from '../lib/db.js'; // Import the singleton with adapter
 
 /**
  * Factory for creating storage instances based on configuration
  */
 export class StorageFactory {
-  private static prismaInstance: PrismaClient | null = null;
-
   /**
    * Create a storage instance based on STORAGE_TYPE environment variable
    */
@@ -22,8 +20,9 @@ export class StorageFactory {
         return new MemoryStorage();
 
       case 'prisma':
-        console.log('📦 Using Prisma (PostgreSQL) storage');
-        return new PrismaStorage(this.getPrismaClient());
+        console.log('📦 Using Prisma (PostgreSQL) storage with pg adapter');
+        // Pass the singleton prisma client with driver adapter
+        return new PrismaStorage(prisma);
 
       default:
         throw new Error(`Unknown storage type: ${storageType}`);
@@ -31,24 +30,11 @@ export class StorageFactory {
   }
 
   /**
-   * Get or create Prisma client singleton
-   */
-  private static getPrismaClient(): PrismaClient {
-    if (!this.prismaInstance) {
-      this.prismaInstance = new PrismaClient({
-        log: env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
-      });
-    }
-    return this.prismaInstance;
-  }
-
-  /**
    * Disconnect Prisma client (call on shutdown)
    */
   static async disconnect(): Promise<void> {
-    if (this.prismaInstance) {
-      await this.prismaInstance.$disconnect();
-      this.prismaInstance = null;
+    if (env.STORAGE_TYPE === 'prisma') {
+      await prisma.$disconnect();
     }
   }
 }

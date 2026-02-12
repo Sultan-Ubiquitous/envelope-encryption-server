@@ -67,6 +67,7 @@ export async function createApp() {
     if (error instanceof ValidationError) {
       const response: ErrorResponse = {
         error: 'Validation Error',
+        //@ts-ignore
         message: error.message,
         statusCode: 400,
       };

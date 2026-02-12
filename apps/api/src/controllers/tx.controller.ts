@@ -1,6 +1,6 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
 import { z } from 'zod';
-import type { TransactionService } from '../services/tx.services';
+import type { TransactionService } from '../services/tx.services.js';
 import type { EncryptRequest, IdParams } from '../types/api.types.js';
 import { BadRequestError } from '../errors/api-errors.js';
 

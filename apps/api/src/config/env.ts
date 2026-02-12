@@ -1,4 +1,6 @@
 import { z } from 'zod';
+import { config } from 'dotenv';
+config();
 
 /**
  * Environment variable schema with validation
