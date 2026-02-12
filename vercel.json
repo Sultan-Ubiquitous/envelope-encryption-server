@@ -1,0 +1,6 @@
+{
+  "buildCommand": "pnpm turbo build --filter=api",
+  "installCommand": "pnpm install",
+  "framework": null,
+  "outputDirectory": "apps/api/dist"
+}
