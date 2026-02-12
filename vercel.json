@@ -1,17 +1,5 @@
 {
-  "version": 2,
-  "buildCommand": "pnpm install && pnpm turbo build --filter=api",
+  "buildCommand": "pnpm turbo build --filter=api",
   "installCommand": "pnpm install",
-  "framework": null,
-  "functions": {
-    "apps/api/api/index.ts": {
-      "runtime": "@vercel/node@latest"
-    }
-  },
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/apps/api/api/index.ts"
-    }
-  ]
+  "framework": null
 }
