@@ -15,6 +15,11 @@
     "isolatedModules": true,
     "noUncheckedIndexedAccess": true
     },
+    "references": [
+    {
+      "path": "../../packages/crypto"
+    }
+  ],
     "include": ["src/**/*", "api/**/*"],
-  "exclude": ["node_modules", "dist", "tests"],
+    "exclude": ["node_modules", "dist", "tests"],
 }
