@@ -3,11 +3,6 @@
   "buildCommand": "pnpm install && pnpm turbo build --filter=api",
   "installCommand": "pnpm install",
   "framework": null,
-  "functions": {
-    "apps/api/api/index.ts": {
-        
-    }
-  },
   "rewrites": [
     {
       "source": "/(.*)",
