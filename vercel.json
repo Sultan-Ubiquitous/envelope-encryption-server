@@ -1,6 +1,12 @@
 {
   "buildCommand": "pnpm turbo build --filter=api",
   "installCommand": "pnpm install",
+  "outputDirectory": "apps/api/dist",
   "framework": null,
-  "outputDirectory": "apps/api/dist"
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/apps/api/api/index.ts"
+    }
+  ]
 }
