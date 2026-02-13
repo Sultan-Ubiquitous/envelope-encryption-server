@@ -14,8 +14,8 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:^",
+    "@repo/typescript-config": "workspace:^",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
